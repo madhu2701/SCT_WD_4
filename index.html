@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background-shapes"></div>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-check-double"></i> TaskMaster
+        </div>
+
+        <div class="user-greeting">
+            <h2>Hello! 👋</h2>
+            <p>Let's plan your success.</p>
+        </div>
+
+        <div class="glass-card form-card">
+            <h3><i class="fas fa-plus-circle"></i> Create New Task</h3>
+
+            <div class="input-group">
+                <label>Task Description</label>
+                <div class="input-wrapper">
+                    <input type="text" id="taskInput">
+                    <button id="micBtn" class="btn-mic"><i class="fas fa-microphone"></i></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" id="dateInput">
+                </div>
+                <div class="input-group">
+                    <label>Time</label>
+                    <input type="time" id="timeInput">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Priority</label>
+                <select id="priorityInput">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+            </div>
+
+            <!-- 🔹 NEW CATEGORY -->
+            <div class="input-group">
+                <label>Category</label>
+                <select id="categoryInput">
+                    <option value="work">Work</option>
+                    <option value="study">Study</option>
+                    <option value="personal">Personal</option>
+                    <option value="shopping">Shopping</option>
+                </select>
+            </div>
+
+            <button id="addTaskBtn" class="btn-primary">Add Task</button>
+        </div>
+
+        <div class="theme-wrapper">
+            <span>Appearance</span>
+            <button id="themeToggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span id="totalTasks">0</span>
+                    <small>Total</small>
+                </div>
+                <div class="stat-item">
+                    <span id="completedTasks">0</span>
+                    <small>Done</small>
+                </div>
+
+                <!-- 🔹 PROGRESS BAR -->
+                <div class="progress-wrapper">
+                    <div class="progress-bar">
+                        <span id="progressFill"></span>
+                    </div>
+                    <small id="progressText">0% Completed</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <span class="active" onclick="filterTasks('all')">All Tasks</span>
+            <span onclick="filterTasks('pending')">Pending</span>
+            <span onclick="filterTasks('completed')">Completed</span>
+
+            <!-- 🔹 SORT -->
+            <select id="sortSelect" class="sort-select">
+                <option value="default">Sort</option>
+                <option value="date">Date</option>
+                <option value="priority">Priority</option>
+                <option value="name">Name</option>
+                <option value="status">Completion</option>
+            </select>
+        </div>
+
+        <div class="tasks-wrapper">
+            <ul id="taskList"></ul>
+            <div class="empty-state" id="emptyState">
+                <h3>All caught up!</h3>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<div id="snackbar">
+    <span>Task deleted</span>
+    <button onclick="undoDelete()">UNDO</button>
+</div>
+
+<!-- 🔹 CELEBRATION -->
+<div id="celebration" class="celebration hidden">
+    🎉 All tasks completed! Keep it up!
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
